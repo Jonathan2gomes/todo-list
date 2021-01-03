@@ -5,11 +5,12 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+
 @Entity
-public class ListaTarefas extends PanacheEntity {
+public class Tarefa extends PanacheEntity {
 
     @Column
-    private String titulo;
+    private String numero;
 
     @Column
     private String itemLista;
@@ -17,24 +18,24 @@ public class ListaTarefas extends PanacheEntity {
     @Column
     private String descricao;
 
-    public ListaTarefas(){
+    public Tarefa(){
         //método construtor
     }
 
-    public ListaTarefas gerarLista(){
-        ListaTarefas listaTarefas = new ListaTarefas();
-        listaTarefas.setTitulo(this.titulo);
-        listaTarefas.setItemLista(this.descricao);
+    public Tarefa gerarLista(){
+        Tarefa tarefa = new Tarefa();
+        tarefa.setNumero(this.numero);
+        tarefa.setItemLista(this.descricao);
 
-        return listaTarefas;
+        return tarefa;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNumero(String titulo) {
+        this.numero = titulo;
     }
 
     public String getItemLista() {
