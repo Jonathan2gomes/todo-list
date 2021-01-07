@@ -1,10 +1,12 @@
 package org.acme.resteasy.rest.resources;
 
 import org.acme.resteasy.domain.Pessoa;
+import org.acme.resteasy.rest.dto.PessoaDTO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -12,11 +14,11 @@ import java.util.List;
 public class PessoaResource {
     //primeiramente vamos listar todas as pessoas
     @GET
-    public List<Pessoa> buscarToDoListPorPessoa(){
+    public List<PessoaDTO> buscarToDoListPorPessoa(){
 
-        List<Pessoa> listaPessoas = Pessoa.listAll();
+        List<Pessoa> pessoas = Pessoa.listAll();
 
-        return listaPessoas;
+        return pessoas.stream().map(PessoaDTO::new).collect(Collectors.toList());
     }
 
     //aqui vamos listar a lista de uma pessoa em específico

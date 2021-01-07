@@ -2,10 +2,7 @@ package org.acme.resteasy.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -17,10 +14,9 @@ public class Pessoa extends PanacheEntity {
     @Column
     private String idade;
 
-    @OneToMany
-    @JoinColumn(name="id_lista_tarefas")
+    @OneToMany(mappedBy="id_tarefa", cascade = CascadeType.ALL)
     @Column
-    private List<ListaTarefas> listaTarefas;
+    private List<Tarefa> tarefa;
 
     public void Pessoa(){
         // método construtor
@@ -42,11 +38,11 @@ public class Pessoa extends PanacheEntity {
         this.idade = idade;
     }
 
-    public List<ListaTarefas> getLista() {
-        return listaTarefas;
+    public List<Tarefa> getLista() {
+        return tarefa;
     }
 
-    public void setLista(List<ListaTarefas> listaTarefas) {
-        this.listaTarefas = listaTarefas;
+    public void setLista(List<Tarefa> tarefas) {
+        this.tarefa = tarefas;
     }
 }
