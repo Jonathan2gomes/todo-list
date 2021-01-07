@@ -29,7 +29,7 @@ public class PessoaDTO {
         pessoa.id = this.id;
         pessoa.setNome(this.nome);
         pessoa.setIdade(this.idade);
-        pessoa.setLista(this.tarefas);
+        pessoa.setTarefa(this.tarefas);
 
         return pessoa;
     }

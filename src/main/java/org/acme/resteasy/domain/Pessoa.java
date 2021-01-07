@@ -14,8 +14,7 @@ public class Pessoa extends PanacheEntity {
     @Column
     private String idade;
 
-    @OneToMany(mappedBy="id_tarefa", cascade = CascadeType.ALL)
-    @Column
+    @OneToMany(mappedBy = "id_tarefa")
     private List<Tarefa> tarefa;
 
     public void Pessoa(){
@@ -38,11 +37,12 @@ public class Pessoa extends PanacheEntity {
         this.idade = idade;
     }
 
-    public List<Tarefa> getLista() {
+    public List<Tarefa> getTarefa() {
         return tarefa;
     }
 
-    public void setLista(List<Tarefa> tarefas) {
-        this.tarefa = tarefas;
+    public void setTarefa(List<Tarefa> tarefa) {
+        this.tarefa = tarefa;
     }
 }
+

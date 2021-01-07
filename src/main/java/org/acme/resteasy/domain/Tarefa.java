@@ -23,18 +23,8 @@ public class Tarefa extends PanacheEntity {
     private boolean concluido;
 
     public Tarefa(){
-        //método construtor
+        //Constructor
     }
-
-//    public Tarefa gerarTarefa(){
-//        Tarefa tarefa = new Tarefa();
-//        tarefa.setNome(this.nome);
-//        tarefa.setData(this.data);
-//        tarefa.setPessoa(this.pessoa);
-//        tarefa.setConcluido(this.concluido);
-//
-//        return tarefa;
-//    }
 
     public String getNome() {
         return nome;
