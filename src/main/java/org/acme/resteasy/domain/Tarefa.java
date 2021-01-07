@@ -2,48 +2,69 @@ package org.acme.resteasy.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 
 @Entity
 public class Tarefa extends PanacheEntity {
 
     @Column
-    private String numero;
+    private String nome;
 
     @Column
-    private String itemLista;
+    private LocalDate data;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
     @Column
-    private String descricao;
+    private boolean concluido;
 
     public Tarefa(){
         //método construtor
     }
 
-    public Tarefa gerarLista(){
-        Tarefa tarefa = new Tarefa();
-        tarefa.setNumero(this.numero);
-        tarefa.setItemLista(this.descricao);
+//    public Tarefa gerarTarefa(){
+//        Tarefa tarefa = new Tarefa();
+//        tarefa.setNome(this.nome);
+//        tarefa.setData(this.data);
+//        tarefa.setPessoa(this.pessoa);
+//        tarefa.setConcluido(this.concluido);
+//
+//        return tarefa;
+//    }
 
-        return tarefa;
+    public String getNome() {
+        return nome;
     }
 
-    public String getNumero() {
-        return numero;
+    public void setNome(String titulo) {
+        this.nome = titulo;
     }
 
-    public void setNumero(String titulo) {
-        this.numero = titulo;
+    public LocalDate getData() {
+        return data;
     }
 
-    public String getItemLista() {
-        return itemLista;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
-    public void setItemLista(String conteudo) {
-        this.itemLista = conteudo;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public boolean isConcluido() {
+        return concluido;
+    }
+
+    public void setConcluido(boolean concluido) {
+        this.concluido = concluido;
+    }
 }
