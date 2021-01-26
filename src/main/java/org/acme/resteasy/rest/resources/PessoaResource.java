@@ -3,6 +3,7 @@ package org.acme.resteasy.rest.resources;
 import org.acme.resteasy.domain.Pessoa;
 import org.acme.resteasy.rest.dto.PessoaDTO;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -26,6 +27,18 @@ public class PessoaResource {
     @Path("{id_pessoa}")
     public Pessoa pessoa(@PathParam("id_pessoa")String idPessoa){
         Pessoa pessoa = Pessoa.findById(idPessoa);
+        return pessoa;
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @POST
+    @Transactional
+    @Path("pessoa")
+    public PessoaDTO SalvarPessoa(PessoaDTO pessoa){
+
+        pessoa.pessoaDTOtoPessoa().persist();
+
         return pessoa;
     }
 }

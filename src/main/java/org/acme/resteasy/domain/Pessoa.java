@@ -14,11 +14,12 @@ public class Pessoa extends PanacheEntity {
     @Column
     private String idade;
 
-    @OneToMany(mappedBy = "id_tarefa")
+    @Column
+    @OneToMany(mappedBy = "id")
     private List<Tarefa> tarefa;
 
     public void Pessoa(){
-        // método construtor
+        // Constructor
     }
 
     public String getNome() {
